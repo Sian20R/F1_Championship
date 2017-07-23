@@ -1,0 +1,83 @@
+<div class="container">
+<section id="main">
+<a href="./#/drivers"><- Back to drivers list</a>
+
+<!-- Driver Photo -->
+<div class="row">
+	<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"></div>
+	<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+		<img ng-show="driver" src="img/drivers/{{driver.Driver.driverId}}.png" />
+	</div>
+	<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"></div>
+</div>
+
+<!-- Driver Details -->
+<div class="row">
+	<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"></div>
+	<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+		<table class="table table-bordered table-striped">
+			 <tbody>
+				<tr>
+					<td>Nationality</td>
+					<td><img ng-show="driver" src="img/flags/{{driver.Driver.nationality}}.png" /> {{driver.Driver.nationality}} </td>
+				</tr>
+				
+				<tr>
+					<td>Team</td>
+					<td>{{driver.Constructors[0].name}} </td>
+				</tr>
+				
+				<tr>
+					<td>Date of Birth</td>
+					<td>{{driver.Driver.dateOfBirth}} </td>
+				</tr>
+				
+				<tr>
+					<td colspan='2'><a href="{{driver.Driver.url}}" target="_blank">Biography</a></td>				
+				</tr>
+			 </tbody>
+		 </table>
+	</div>
+	<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"></div>
+</div>
+
+<!-- Driver Race Details -->
+<div class="row">
+	<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
+	<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+		<table class="table table-bordered table-striped">
+			 <thead>
+				<tr><th colspan="5">Formula 1 2013 Results</th></tr>
+			 </thead>
+			 
+			 <tbody>
+				<tr>
+					<td>Round</td> 
+					<td>Grand Prix</td> 
+					<td>Team</td> 
+					<td>Grid</td> 
+					<td>Race</td>
+				</tr>
+				
+				<tr ng-repeat="race in races">
+				  <td>{{race.round}}</td>
+				  <td><img  src="img/flags/{{race.Circuit.Location.country}}.png" /> &nbsp; {{race.raceName}}</td>
+				  <td>{{race.Results[0].Constructor.name}}</td>
+				  <td>{{race.Results[0].grid}}</td>
+				  <td>{{race.Results[0].position}}</td>
+				</tr>
+
+			 </tbody>
+		 </table>
+	</div>
+	<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
+</div>
+
+
+</section>
+</div>
+
+
+
+
+

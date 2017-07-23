@@ -1,0 +1,55 @@
+<div class="container">
+	<div class="form-horizontal">
+	  <div class="form-group">
+		<label for="inputDriverName" class="col-sm-2 control-label">Driver Name: </label>
+		<div class="col-sm-6">
+		  <input type="text"  class="form-control" ng-model="nameFilter" placeholder="Search..."/>
+		</div>
+	  </div>
+	  <div class="form-group">
+		<label for="inputConstructorName" class="col-sm-2 control-label">Constructor: </label>
+		<div class="col-sm-10">
+		   <select ng-model="constructorFliter">
+			  <option value=""> Select </option>
+			  <option ng-repeat="name in constructorList| unique:'name'" value="{{name}}"> {{name}}</option>
+		  </select>
+		</div>
+	  </div>
+	</div>
+		
+  <div class="row">	
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	  <table class="table table-bordered table-striped">
+		<thead>
+		  <tr>
+			<th colspan="4">Drivers Championship Standings</th>
+		</tr>
+		</thead>
+		<tbody>
+		  <tr>
+			<td><h4> No. </h4></td>
+			<td><h4> Driver's Name </h4></td>
+			<td><h4> Constructor's Name </h4></td>
+			<td><h4> Points </h4></td>
+		  </tr>
+		  <tr ng-repeat="driver in driversList | filter: nameSearchFilter | filter: constructorSearchFilter">
+			<td>
+				{{$index + 1}}
+			</td>
+			<td>
+			  <img src="img/flags/{{driver.Driver.nationality}}.png" />
+			  <a href="#/drivers/{{driver.Driver.driverId}}">
+				{{driver.Driver.givenName}}&nbsp;{{driver.Driver.familyName}}
+			  </a>
+			</td>
+			<td>
+				{{driver.Constructors[0].name}}
+			</td>
+			<td>
+				{{driver.points}}
+			</td>
+		  </tr>
+		</tbody>
+	  </table>
+  </div>
+</div>
